@@ -18,37 +18,34 @@ public class LoginController implements ActionListener {
 
     private LoginView loginView;
     private Login login;
-    private Button[] bottonePremuto;
 
     public LoginController(LoginView loginView, Login login) {
         this.loginView = loginView;
         this.login = login;
         loginView.addActionListeners(this);
         loginView.setVisible(true);
-        
+
     }
 
-        public void actionPerformed (ActionEvent e) {
-                
-                bottonePremuto=loginView.getButtons();
-                if (e.getSource() == bottonePremuto[0]) {
-                System.exit(0);
-            }
-            if (e.getSource() == bottonePremuto[1]) {
-                String utenti[] = login.getUtenti();
-                int i = 0;
-                while (utenti[i] != loginView.getUser()) {
-                    i++;
-                }
-                String password[] = login.getPassword();
-                System.out.println("" + utenti[i]);
-                System.out.println("" + password[i]);
-                System.out.println("" + loginView.getPassword());
-                if (password[i].equals(loginView.getPassword()) == false) {
-                    JOptionPane.showMessageDialog(null, "Password sbagliata, riprovare");
-                }
-            }
-
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loginView.exit) {
+            System.exit(0);
         }
-    
+        if (e.getSource() == loginView.login) {
+            String utenti[] = login.getUtenti();
+            int i = 0;
+            while (utenti[i] != loginView.getUser()) {
+                i++;
+            }
+            String password[] = login.getPassword();
+            System.out.println("" + utenti[i]);
+            System.out.println("" + password[i]);
+            System.out.println("" + loginView.getPassword());
+            if (password[i].equals(loginView.getPassword()) == false) {
+                JOptionPane.showMessageDialog(null, "Password sbagliata, riprovare");
+            }
+        }
+
+    }
+
 }
