@@ -25,7 +25,6 @@ public class LoginView extends JFrame{
     ActionListener l;
     TextField pass;
     Button exit, login;
-    ButtonGroup bG = new ButtonGroup();
     Label dsc, psw;
     JRadioButton segreteria = new JRadioButton("Segreteria");
     JRadioButton magazzino = new JRadioButton("Magazzino");
@@ -36,11 +35,7 @@ public class LoginView extends JFrame{
         JPanel content = new JPanel();
         GridLayout experimentLayout = new GridLayout(10,0);
         content.setLayout(experimentLayout);
-        
 
-        bG.add(segreteria);
-        bG.add(magazzino);
-        bG.add(gestioneNegozio);
         dsc = new Label("Seleziona utente e inserire password", Label.CENTER);
         psw = new Label("Password", Label.CENTER);
 
@@ -58,7 +53,7 @@ public class LoginView extends JFrame{
         content.add(pass);
         content.add(exit);
         content.add(login);
-        
+        /*
         dsc.setBounds(70, 50, 250, 20);
         segreteria.setBounds(70, 90, 150, 60);
         magazzino.setBounds(70, 130, 150, 60);
@@ -67,6 +62,7 @@ public class LoginView extends JFrame{
         pass.setBounds(170, 230, 90, 20);
         exit.setBounds(70, 290, 100, 40);
         login.setBounds(230, 290, 100, 40);
+        */
         this.setContentPane(content);
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,13 +86,6 @@ public class LoginView extends JFrame{
     public void addActionListeners(ActionListener e){
         exit.addActionListener(e);
         login.addActionListener(e);
-    }
-    
-    public Button[] getButtons(){
-        Button[] temp = new Button[2];
-        temp[0] = exit;
-        temp[1] = login;
-        return temp;
     }
 
 }

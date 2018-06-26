@@ -38,11 +38,28 @@ public class LoginController implements ActionListener {
                 i++;
             }
             String password[] = login.getPassword();
-            System.out.println("" + utenti[i]);
-            System.out.println("" + password[i]);
-            System.out.println("" + loginView.getPassword());
             if (password[i].equals(loginView.getPassword()) == false) {
                 JOptionPane.showMessageDialog(null, "Password sbagliata, riprovare");
+            } else {
+                //creo interfaccia per segreteria, magazzino, gestione negozio a seconda del tipo di utente
+                switch (utenti[i]) {
+                    case "segreteria":
+                        loginView.setVisible(false);
+                        //codice creazione view
+                        SegreteriaView segreteriaView = new SegreteriaView();
+                        Segreteria segreteria = new Segreteria(loginView);
+                        SegreteriaController segreteriaController = new SegreteriaController(segreteriaView, segreteria);
+                        
+                        break;
+                    case "magazzino":
+                        //codice creazione view
+                        break;
+                    case "gestioneNegozio":
+                        //codice creazione view
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
