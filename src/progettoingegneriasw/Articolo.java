@@ -8,35 +8,50 @@ package progettoingegneriasw;
  *
  * @author ionbaltaga
  */
+import java.util.Date;
+
+
 public class Articolo {
-    private String nome, descrizione, sport, materiale;
+    private TipoArticolo type;
+    public static int cod_articolo = 0;
+    private double price;
+    private Date production_date; 
 
-    public Articolo (String nome, String descrizione, String sport, String materiale){
-        this.nome=nome;
-        this.descrizione=descrizione;
-        this.sport=sport;
-        this.materiale=materiale;
+    public Articolo (TipoArticolo type, Date production_date, double price){
+        this.price = price;
+        this.production_date = production_date;
+        this.type = type;
+        cod_articolo = cod_articolo+1;
     }
 
-    public String getNome() {
-        return nome;
+    public double getPrice() {
+        return price;
     }
 
-    public String getDescrizione() {
-        return descrizione;
-    }
-
-    public String getSport() {
-        return sport;
-    }
-
-    public String getMateriale() {
-        return materiale;
+    public Date getProductionDate() {
+        return production_date;
     }
     
-    @Override
-    public String toString() {
-        return "Articolo{" + "nome=" + nome + ", descrizione=" + descrizione + ", sport=" + sport + ", materiale=" + materiale + '}';
+    public double getCode() {
+        return cod_articolo;
     }
+    
+    public TipoArticolo getTypeArticle(){
+    	return type;
+    }
+    
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    public void setType(TipoArticolo type) {
+        this.type = type;
+    }
+    
+    public void setProductionDate(Date d) {
+        this.production_date = d;
+    }
+    
     
 }
+

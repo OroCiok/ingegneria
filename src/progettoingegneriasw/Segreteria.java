@@ -16,6 +16,4 @@ public class Segreteria {
     public Segreteria(LoginView loginview) {
         this.loginview = loginview;
     }
-
-
 }

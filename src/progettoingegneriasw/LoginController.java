@@ -5,15 +5,18 @@
  */
 package progettoingegneriasw;
 
-import java.awt.Button;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author ionbaltaga
  */
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
+
+
 public class LoginController implements ActionListener {
 
     private LoginView loginView;
@@ -24,6 +27,8 @@ public class LoginController implements ActionListener {
         this.login = login;
         loginView.addActionListeners(this);
         loginView.setVisible(true);
+        loginView.setResizable(false);
+        loginView.setBounds(325, 300, 350, 345);
 
     }
 
@@ -31,37 +36,46 @@ public class LoginController implements ActionListener {
         if (e.getSource() == loginView.exit) {
             System.exit(0);
         }
+        String utenti[]; 
+        
         if (e.getSource() == loginView.login) {
-            String utenti[] = login.getUtenti();
+             utenti = login.getUtenti();
             int i = 0;
-            while (utenti[i] != loginView.getUser()) {
-                i++;
-            }
+            if(loginView.segreteria.isSelected() || loginView.magazzino.isSelected() || loginView.gestioneNegozio.isSelected()){
+            	
+            	while (utenti[i] != loginView.getUser()) {
+            		i++;
+            	}
+            
             String password[] = login.getPassword();
-            if (password[i].equals(loginView.getPassword()) == false) {
-                JOptionPane.showMessageDialog(null, "Password sbagliata, riprovare");
-            } else {
-                //creo interfaccia per segreteria, magazzino, gestione negozio a seconda del tipo di utente
-                switch (utenti[i]) {
-                    case "segreteria":
-                        loginView.setVisible(false);
-                        //codice creazione view
-                        SegreteriaView segreteriaView = new SegreteriaView();
-                        Segreteria segreteria = new Segreteria(loginView);
-                        SegreteriaController segreteriaController = new SegreteriaController(segreteriaView, segreteria);
-                        
-                        break;
-                    case "magazzino":
-                        //codice creazione view
-                        break;
-                    case "gestioneNegozio":
-                        //codice creazione view
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+            
+            	if (password[i].equals(loginView.getPassword()) == false) {
+            		JOptionPane.showMessageDialog(null, "Password non inserita o sbagliata, reinserire la password");
+            	} else {
+            		//creo interfaccia per segreteria, magazzino, gestione negozio a seconda del tipo di utente
+            		switch (utenti[i]) {
+                    	case "segreteria":
+                    		loginView.setVisible(false);
+                    		//codice creazione view
+                    		SegreteriaView segreteriaView = new SegreteriaView();
+                    		Segreteria segreteria = new Segreteria(loginView);
+                    		SegreteriaController segreteriaController = new SegreteriaController(segreteriaView, segreteria);
+                    		break;
+                    		case "magazzino":
+                    			//codice creazione view
+                    			break;
+                    		case "gestioneNegozio":
+                    			//codice creazione view
+                    			break;
+                    		default:
+                    			break;
+            		}
+            	}
+           
+         }else{
+       	   	JOptionPane.showMessageDialog(null, "E' necessario selezionare l'utente per poter effettuare il login");
+         }
+      }	 
 
     }
 
