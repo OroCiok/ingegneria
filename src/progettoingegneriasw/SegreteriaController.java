@@ -19,6 +19,7 @@ public class SegreteriaController implements ActionListener{
     private SegreteriaView segreteriaView;
     private Segreteria segreteria;
     private TipoArticoloView new_type = new TipoArticoloView();
+    
 
     
     
@@ -37,6 +38,7 @@ public class SegreteriaController implements ActionListener{
         new_type.setVisible(false);
         new_type.setBounds(275, 275, 650, 225);
         new_type.setResizable(false);
+        
     }
     
     public void actionPerformed(ActionEvent e) {

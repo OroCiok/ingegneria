@@ -54,21 +54,23 @@ public class LoginController implements ActionListener {
             	} else {
             		//creo interfaccia per segreteria, magazzino, gestione negozio a seconda del tipo di utente
             		switch (utenti[i]) {
-                    	case "segreteria":
+                            case "segreteria":
                     		loginView.setVisible(false);
                     		//codice creazione view
                     		SegreteriaView segreteriaView = new SegreteriaView();
                     		Segreteria segreteria = new Segreteria(loginView);
                     		SegreteriaController segreteriaController = new SegreteriaController(segreteriaView, segreteria);
                     		break;
-                    		case "magazzino":
+                            case "magazzino":
                     			//codice creazione view
-                    			break;
-                    		case "gestioneNegozio":
-                    			//codice creazione view
-                    			break;
-                    		default:
-                    			break;
+                    		break;
+                            case "gestioneNegozio":
+                                NegozioView negozio_view = new NegozioView();
+                                Negozio negozio = new Negozio("DCTMTT97C18I775K", "Matteo Di Catterina", "Via Passere, 31", "San Briccio(VR)");
+                                NegozioController negozioController = new NegozioController(negozio_view, negozio);
+                    		break;
+                            default:
+                    		break;
             		}
             	}
            
