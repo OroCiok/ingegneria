@@ -5,15 +5,26 @@
  */
 package progettoingegneriasw;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ionbaltaga
  */
 public class Segreteria {
+    private ArrayList <TipoArticolo> tipiArticoli;
 
-    LoginView loginview;
-
-    public Segreteria(LoginView loginview) {
-        this.loginview = loginview;
+    public Segreteria() {
+        this.tipiArticoli = new ArrayList <TipoArticolo> ();
     }
+
+    public ArrayList<TipoArticolo> getTipiArticoli() {
+        return tipiArticoli;
+    }
+
+    public void setTipiArticoli(ArrayList<TipoArticolo> tipiArticoli) {
+        this.tipiArticoli = tipiArticoli;
+    }
+    
+
 }

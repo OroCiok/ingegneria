@@ -58,7 +58,7 @@ public class LoginController implements ActionListener {
                     		loginView.setVisible(false);
                     		//codice creazione view
                     		SegreteriaView segreteriaView = new SegreteriaView();
-                    		Segreteria segreteria = new Segreteria(loginView);
+                    		Segreteria segreteria = new Segreteria();
                     		SegreteriaController segreteriaController = new SegreteriaController(segreteriaView, segreteria);
                     		break;
                             case "magazzino":
