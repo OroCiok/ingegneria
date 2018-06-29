@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 
 public class SegreteriaView extends JFrame{
 
-    JButton ingresso, visualizzaMovimenti, termina, cambia_utente, inserisci_articolo;
+    JButton ingresso, visualizzaMovimenti, termina, cambia_utente, inserisci_articolo, inserisci_negozio;
     Label description = new Label("Scegliere una delle seguenti opzioni", Label.CENTER);
     
     SegreteriaView() {
@@ -35,13 +35,15 @@ public class SegreteriaView extends JFrame{
         termina = new JButton("Termina");
         cambia_utente = new JButton("Logout");
         inserisci_articolo = new JButton("Inserisci nuovo tipo articolo");
+        inserisci_negozio = new JButton("Inserisci nuovo negozio");    
         
         description.setBounds(25, 20, 300, 15);
         ingresso.setBounds(25,50,300,30);
         visualizzaMovimenti.setBounds(25,100,300,30);
         inserisci_articolo.setBounds(25,150,300,30);
-        termina.setBounds(15,210,150,30);
-        cambia_utente.setBounds(195, 210, 150, 30);
+        inserisci_negozio.setBounds(25, 200, 300, 30);
+        termina.setBounds(15,310,150,30);
+        cambia_utente.setBounds(195, 310, 150, 30);
         
         container.add(description);
         container.add(ingresso);
@@ -49,6 +51,7 @@ public class SegreteriaView extends JFrame{
         container.add(inserisci_articolo);
         container.add(termina);
         container.add(cambia_utente);
+        container.add(inserisci_negozio);
        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -60,6 +63,7 @@ public class SegreteriaView extends JFrame{
         visualizzaMovimenti.addActionListener(e);
         inserisci_articolo.addActionListener(e);
         cambia_utente.addActionListener(e);
+        inserisci_negozio.addActionListener(e);
         
     }
 }

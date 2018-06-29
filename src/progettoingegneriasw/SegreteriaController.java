@@ -19,7 +19,7 @@ public class SegreteriaController implements ActionListener{
     private SegreteriaView segreteriaView;
     private Segreteria segreteria;
     private TipoArticoloView new_type = new TipoArticoloView();
-    
+    private NewNegozioView new_negozio= new NewNegozioView();
 
     
     
@@ -33,11 +33,17 @@ public class SegreteriaController implements ActionListener{
         segreteriaView.addActionListeners(this);
         segreteriaView.setVisible(true);
         segreteriaView.setResizable(false);
-        segreteriaView.setBounds(275, 275, 360, 290);
+        segreteriaView.setBounds(275, 275, 360, 390);
         new_type.addActionListeners(this);
         new_type.setVisible(false);
         new_type.setBounds(275, 275, 650, 225);
         new_type.setResizable(false);
+        new_negozio.addActionListeners(this);
+        new_negozio.setVisible(false);
+        new_negozio.setBounds(275, 275, 650, 225);
+        new_negozio.setResizable(false);
+        
+        
         
     }
     
@@ -71,7 +77,29 @@ public class SegreteriaController implements ActionListener{
         	}
         }
         
+        if(e.getSource() == segreteriaView.inserisci_negozio){
+            segreteriaView.setVisible(false);
+            new_negozio.setVisible(true);
+        }
         
+        if(e.getSource() == new_negozio.inserisci_negozio){
+            if(new_negozio.nome.getText().equals("") || new_negozio.codFiscale.getText().equals("") || new_negozio.indirizzo.getText().equals("") || new_negozio.città.getText().equals("")){
+        	JOptionPane.showMessageDialog(null, "Impossibile inserire il negozio, è necessario compilare tutti i campi.");
+            }else{
+                this.segreteria.addNegozio(new Negozio(new_negozio.nome.getText(), new_negozio.codFiscale.getText(), new_negozio.indirizzo.getText(), new_negozio.città.getText()));
+                JOptionPane.showMessageDialog(null, "Il nuovo negozio è stato aggiunto correttamente.");
+                new_negozio.codFiscale.setText("");
+                new_negozio.nome.setText("");
+                new_negozio.indirizzo.setText("");
+                new_negozio.città.setText("");
+                
+            }
+        }
+        
+        if(e.getSource() == new_negozio.menu_principale){
+            new_negozio.setVisible(false);
+            segreteriaView.setVisible(true);
+        }
     }
  
 }

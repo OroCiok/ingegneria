@@ -33,7 +33,7 @@ public class NegozioController implements ActionListener {
         negozioView.setResizable(false);
         new_ordine.addActionListeners(this);
         new_ordine.setResizable(false);
-        new_ordine.setBounds(310, 310, 400, 400);
+        new_ordine.setBounds(310, 310, 650, 250);
         
         
     }
@@ -54,15 +54,24 @@ public class NegozioController implements ActionListener {
         }
         
         if( e.getSource() == negozioView.shop_list ){
-            String codFiscale = "";
-            codFiscale = JOptionPane.showInputDialog(null, "Inserire il codice fiscale per confermare la propria identità");
-            //controllo codice Fiscale
+            
+            
             
             if( negozioView.shop_list.getSelectedIndex() != -1 ){
+                String codFiscale = "";
+                codFiscale = JOptionPane.showInputDialog(null, "Inserire il codice fiscale per confermare la propria identità");
                 negozioView.inserisci_ordine.setEnabled(true);
                 negozioView.visualizza_ordini.setEnabled(true);
             }
             
+        }
+        
+        if( e.getSource() == new_ordine.menu_principale){
+            new_ordine.setVisible(false);
+            negozioView.setVisible(true);
+            negozioView.visualizza_ordini.setEnabled(false);
+            negozioView.inserisci_ordine.setEnabled(false);
+            negozioView.shop_list.setSelectedIndex(-1);
         }
         
     }

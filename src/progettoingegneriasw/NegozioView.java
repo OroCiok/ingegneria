@@ -8,6 +8,7 @@ package progettoingegneriasw;
 import java.awt.Container;
 import java.awt.Label;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -21,8 +22,11 @@ public class NegozioView extends JFrame {
     
     JButton inserisci_ordine, visualizza_ordini, indietro;
     Label negozio = new Label("Selezionare un negozio dall'elenco");
-    String negozi[] = {"Negozio - Verona", "Negozio - Lavagno"};
-    JComboBox shop_list = new JComboBox(negozi);
+    Segreteria segreteria = new Segreteria();
+    JComboBox shop_list = new JComboBox();
+    private ArrayList <Negozio> negozi = segreteria.getShop_list();
+    int i, size = negozi.size();
+    
     
     
     NegozioView(){
@@ -33,8 +37,10 @@ public class NegozioView extends JFrame {
         
         shop_list.setSelectedIndex(-1);
        
+        for(i = 0; i < size; i++){
+            shop_list.addItem("Negozio -"+negozi.get(i).getCittà());
+        }
         
-        //ciao
         
         inserisci_ordine = new JButton("Crea Ordine");
         visualizza_ordini = new JButton("Visualizza ordini");
@@ -48,7 +54,8 @@ public class NegozioView extends JFrame {
         shop_list.setBounds(15, 50, 250, 25);
         
         
-        
+        inserisci_ordine.setEnabled(false);
+        visualizza_ordini.setEnabled(false);
         
         
         container.add(negozio);

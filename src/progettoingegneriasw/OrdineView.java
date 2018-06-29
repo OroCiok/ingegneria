@@ -18,8 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class OrdineView extends JFrame {
-Label description, label_nome, label_descrizione, label_sport, label_materiale;
-	
+        Label description, label_nome, label_descrizione, label_sport, label_materiale;
 	JButton menu_principale, invia_ordine; 
 	JTextField nome, descrizione, sport, materiale;
 	Container container = getContentPane();
@@ -75,10 +74,8 @@ Label description, label_nome, label_descrizione, label_sport, label_materiale;
 	}
 	
 	 public void addActionListeners(ActionListener e){
-		 
-		 invia_ordine.addActionListener(e);
-		 menu_principale.addActionListener(e);
-	 
+            invia_ordine.addActionListener(e);
+            menu_principale.addActionListener(e);
 	 }
 
 }
