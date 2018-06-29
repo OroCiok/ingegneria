@@ -34,7 +34,7 @@ public class NegozioView extends JFrame {
         shop_list.setSelectedIndex(-1);
        
         
-        
+        //ciao
         
         inserisci_ordine = new JButton("Crea Ordine");
         visualizza_ordini = new JButton("Visualizza ordini");
