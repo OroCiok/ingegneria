@@ -65,6 +65,7 @@ public class LoginController implements ActionListener {
                     			//codice creazione view
                     		break;
                             case "gestioneNegozio":
+                                loginView.setVisible(false);
                                 NegozioView negozio_view = new NegozioView();
                                 Negozio negozio = new Negozio("DCTMTT97C18I775K", "Matteo Di Catterina", "Via Passere, 31", "San Briccio(VR)");
                                 NegozioController negozioController = new NegozioController(negozio_view, negozio);
