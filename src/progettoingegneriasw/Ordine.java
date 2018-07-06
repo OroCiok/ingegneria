@@ -5,71 +5,95 @@
  */
 package progettoingegneriasw;
 
+import static java.lang.Math.abs;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 /**
  *
- * @author ionbaltaga
+ * @author dicatterinamatteo
  */
 public class Ordine {
 
-   private Negozio negozio;
-   private static int order_number = 0;
-   private Date order_date;
-   private TipoArticolo type;
-   private int quantità;
-   private double total_price;
-   
-   
-   public Ordine(Negozio negozio, Date order_date, TipoArticolo type, int quantità) {
-	   this.negozio = negozio;
-	   this.order_date = order_date;
-	   this.type = type;
-	   this.quantità = quantità;
-	   order_number = order_number +1;
-	   total_price = calculate_total_price();
-   }
+    private Negozio negozio;
+    private int codice_ordine = 0;
+    private Map<Articolo, Integer> quantità;
+    private double prezzo_totale;
+    private String data;
+    private boolean is_shipped;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+    public Ordine(Negozio negozio, Map<Articolo, Integer> ordine, double price) {
+        this.negozio = negozio;
+        this.quantità = ordine;
+        prezzo_totale = price;
+        data = sdf.format(new Date());
+        codice_ordine = hashCode();
+        is_shipped = false;
+    }
 
-   public Negozio getNegozio() {
-	   return negozio;
-   }
+    public boolean Is_shipped() {
+        return is_shipped;
+    }
 
+    public void setIs_shipped(boolean is_shipped) {
+        this.is_shipped = is_shipped;
+    }
 
-   public void setNegozio(Negozio negozio) {
-	   this.negozio = negozio;
-   }
+    public int getOrder_number() {
+        return codice_ordine;
+    }
 
+    public void setOrder_number(int order_number) {
+        this.codice_ordine = order_number;
+    }
 
-   public TipoArticolo getType() {
-	   return type;
-   }
+    public Map<Articolo, Integer> getMapOrdine() {
+        return quantità;
+    }
 
+    public void setMapOrdine(Map<Articolo, Integer> ordine) {
+        this.quantità.putAll(ordine);
+    }
 
-   public void setType(TipoArticolo type) {
-	   this.type = type;
-   }
+    public double getTotal_price() {
+        return prezzo_totale;
+    }
 
+    public void setTotal_price(double total_price) {
+        this.prezzo_totale = total_price;
+    }
 
-   public int getQuantità() {
-	   return quantità;
-   }
+    public String getData() {
+        return data;
+    }
 
+    public void setData(String data) {
+        this.data = data;
+    }
+    public Negozio getNegozio() {
+        return negozio;
+    }
 
-   public void setQuantità(int quantità) {
-	   this.quantità = quantità;
-   }
-   
-   
-   public double calculate_total_price() {
-	   double price = 0.0;
-	   
-	   return price;
-   }
-   
-   
-   
-   
-   
+    public void setNegozio(Negozio negozio) {
+        this.negozio = negozio;
+    }
+    
+    
+    @Override
+     public int hashCode() {
+        return this.negozio.hashCode()^data.hashCode()^quantità.hashCode()^((int)prezzo_totale);
+    }
+     
+    @Override
+    public boolean equals(Object other){
+        Ordine o;
+        if(other instanceof Ordine){
+           o = (Ordine) other;
+           return o.negozio.equals(this.negozio) && o.data == this.getData() && o.prezzo_totale == this.getTotal_price();
+        }
+        
+        return false;
+    } 
 }
-

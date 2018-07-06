@@ -24,8 +24,8 @@ public class NegozioView extends JFrame {
     Label negozio = new Label("Selezionare un negozio dall'elenco");
     Segreteria segreteria = new Segreteria();
     JComboBox shop_list = new JComboBox();
-    private ArrayList <Negozio> negozi = segreteria.getShop_list();
-    int i, size = negozi.size();
+    //private ArrayList <Negozio> negozi = segreteria.getShop_list();
+    //int i, size = negozi.size();
     
     
     
@@ -37,9 +37,9 @@ public class NegozioView extends JFrame {
         
         shop_list.setSelectedIndex(-1);
        
-        for(i = 0; i < size; i++){
-            shop_list.addItem("Negozio -"+negozi.get(i).getCittà());
-        }
+        //for(i = 0; i < size; i++){
+            //shop_list.addItem("Negozio -"+negozi.get(i).getCittà());
+        //}
         
         
         inserisci_ordine = new JButton("Crea Ordine");

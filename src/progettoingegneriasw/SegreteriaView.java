@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 
 public class SegreteriaView extends JFrame{
 
-    JButton ingresso, visualizzaMovimenti, termina, cambia_utente, inserisci_articolo, inserisci_negozio;
+    JButton visualizzaMovimenti, termina, cambia_utente, inserisci_tipoart, inserisci_negozio, inserisci_articolo,inserisci_art;
     Label description = new Label("Scegliere una delle seguenti opzioni", Label.CENTER);
     
     SegreteriaView() {
@@ -29,29 +29,31 @@ public class SegreteriaView extends JFrame{
     	container.setLayout(null);
     	
         setTitle("Gestione Segreteria");
-        
-        ingresso = new JButton("Inserisci ingresso in magazzino");
+
         visualizzaMovimenti = new JButton("Visualizza movimenti magazzino");
         termina = new JButton("Termina");
         cambia_utente = new JButton("Logout");
-        inserisci_articolo = new JButton("Inserisci nuovo tipo articolo");
+        inserisci_tipoart = new JButton("Inserisci nuovo tipo articolo");
         inserisci_negozio = new JButton("Inserisci nuovo negozio");    
+        inserisci_art=new JButton("Inserisci Articolo");
         
         description.setBounds(25, 20, 300, 15);
-        ingresso.setBounds(25,50,300,30);
-        visualizzaMovimenti.setBounds(25,100,300,30);
-        inserisci_articolo.setBounds(25,150,300,30);
-        inserisci_negozio.setBounds(25, 200, 300, 30);
+        inserisci_tipoart.setBounds(25,50,300,30);
+        inserisci_art.setBounds(25,100,300,30);
+        inserisci_negozio.setBounds(25,150,300,30);
+        visualizzaMovimenti.setBounds(25, 200, 300, 30);
         termina.setBounds(15,310,150,30);
         cambia_utente.setBounds(195, 310, 150, 30);
         
         container.add(description);
-        container.add(ingresso);
+        container.add(inserisci_art);
         container.add(visualizzaMovimenti);
-        container.add(inserisci_articolo);
+        container.add(inserisci_art);
         container.add(termina);
         container.add(cambia_utente);
         container.add(inserisci_negozio);
+        container.add(inserisci_art);
+        container.add(inserisci_tipoart);
        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -59,11 +61,13 @@ public class SegreteriaView extends JFrame{
     public void addActionListeners(ActionListener e){
     	
         termina.addActionListener(e);
-        ingresso.addActionListener(e);
+        
         visualizzaMovimenti.addActionListener(e);
-        inserisci_articolo.addActionListener(e);
+        inserisci_art.addActionListener(e);
         cambia_utente.addActionListener(e);
         inserisci_negozio.addActionListener(e);
+        inserisci_art.addActionListener(e);
+        inserisci_tipoart.addActionListener(e);
         
     }
 }

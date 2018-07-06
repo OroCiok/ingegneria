@@ -22,10 +22,10 @@ import javax.swing.JTextField;
 
 public class TipoArticoloView extends JFrame {
 
-	Label description, label_nome, label_descrizione, label_sport, label_materiale;
+	Label description, label_nome, label_descrizione, label_sport, label_materiale,label_prezzo,label_dataproduzione;
 	
 	JButton menu_principale, inserisci_nuovo_tipo; 
-	JTextField nome, descrizione, sport, materiale;
+	JTextField nome, descrizione, sport, materiale,gg,mm,aaaa,field_prezzo;
 	Container container = getContentPane();
 	
 	TipoArticoloView(){
@@ -38,23 +38,28 @@ public class TipoArticoloView extends JFrame {
     	label_materiale = new Label("Materiale ");
     	menu_principale = new JButton("Indietro");
     	inserisci_nuovo_tipo = new JButton("Inserisci Tipo Articolo");
-    	
+        
+        
     	nome = new JTextField(70);
     	sport = new JTextField(70);
     	descrizione = new JTextField(70);
-    	materiale = new JTextField(70);
+    	materiale = new JTextField(70); 
     	
     	description.setBounds(5, 10, 600, 15);
     	label_nome.setBounds(5, 35, 130, 15);
-    	label_descrizione.setBounds(5, 60, 130, 15);
-    	label_sport.setBounds(5, 85, 130, 15);
+    	label_descrizione.setBounds(5, 60, 140, 15);
+    	label_sport.setBounds(5, 85, 130,15);
     	label_materiale.setBounds(5, 110, 130, 15);
     	
     	nome.setBounds(170, 35, 400, 20);
     	descrizione.setBounds(170, 60, 400, 20);
     	sport.setBounds(170, 85, 400, 20);
     	materiale.setBounds(170, 110, 400, 20);
+
+        
     	
+        
+        
     	
     	inserisci_nuovo_tipo.setBounds(25,150,250,30);
     	menu_principale.setBounds(375, 150, 250, 30);
@@ -77,7 +82,6 @@ public class TipoArticoloView extends JFrame {
 	}
 	
 	 public void addActionListeners(ActionListener e){
-		 
 		 inserisci_nuovo_tipo.addActionListener(e);
 		 menu_principale.addActionListener(e);
 	 

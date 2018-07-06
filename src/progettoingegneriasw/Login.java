@@ -5,6 +5,8 @@
  */
 package progettoingegneriasw;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ionbaltaga
@@ -12,8 +14,8 @@ package progettoingegneriasw;
 public class Login {
      private final String[] utenti;
      private String[] password;
-
-    public Login(String[] utenti, String[] password) {
+     //public static ArrayList <TipoArticolo> tipiArticoli = new ArrayList <TipoArticolo>();//statica!!!!!
+    public Login(String[] utenti, String[] password) {;
         this.utenti = utenti;
         this.password = password;
     }

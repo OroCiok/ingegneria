@@ -13,26 +13,26 @@ import java.util.Date;
 
 public class Articolo {
     private TipoArticolo type;
-    public static int cod_articolo = 0;
+    public int cod_articolo;
     private double price;
-    private Date production_date; 
+    private Data production_date; 
 
-    public Articolo (TipoArticolo type, Date production_date, double price){
+    public Articolo (TipoArticolo type, double price, Data production_date){
+        this.type = type;
         this.price = price;
         this.production_date = production_date;
-        this.type = type;
-        cod_articolo = cod_articolo+1;
+        this.cod_articolo = this.hashCode();
     }
 
     public double getPrice() {
         return price;
     }
 
-    public Date getProductionDate() {
+    public Data getProductionDate() {
         return production_date;
     }
     
-    public double getCode() {
+    public int getCodiceArticolo() {
         return cod_articolo;
     }
     
@@ -48,8 +48,26 @@ public class Articolo {
         this.type = type;
     }
     
-    public void setProductionDate(Date d) {
+    
+    public void setProductionDate(Data d) {
         this.production_date = d;
+    }
+    @Override
+    public int hashCode() {
+        return (int) price ^ type.hashCode() ^ production_date.hashCode();
+    }
+    @Override 
+    public boolean equals(Object other){ 
+        Articolo articolo = null; 
+        if (other instanceof Articolo) { 
+            articolo = (Articolo) other; 
+            return this.getTypeArticle().equals(articolo.getTypeArticle()) && this.price == articolo.price && this.production_date.equals(articolo.production_date); 
+        } 
+        return false; 
+    }
+    @Override  
+    public String toString(){
+       return type.toString()+this.price+this.production_date.toString();
     }
     
     

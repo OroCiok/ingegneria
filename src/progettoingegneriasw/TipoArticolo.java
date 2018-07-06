@@ -5,6 +5,8 @@
  */
 package progettoingegneriasw;
 
+import java.util.Objects;
+
 /**
  *
  * @author ionbaltaga
@@ -35,10 +37,20 @@ public class TipoArticolo {
     public String getMateriale() {
         return materiale;
     }
-    
+
+    @Override
+    public int hashCode() {
+        return nome.hashCode() ^ descrizione.hashCode() ^ sport.hashCode() ^ materiale.hashCode();
+    }
+/*
+    @Override
+    public boolean equals(Object obj) {
+       
+    }
+  */  
     @Override
     public String toString() {
-        return " Tipo Articolo{" + "nome=" + nome + ", descrizione=" + descrizione + ", sport=" + sport + ", materiale=" + materiale + '}';
+        return ""+nome +" "+ descrizione+" " + sport +" "+ materiale;
     }
     
 }

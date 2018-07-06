@@ -10,6 +10,7 @@ package progettoingegneriasw;
  * @author ionbaltaga
  */
 public class Data {
+
     private final int day, month, year;
 
     public Data(int day, int month, int year) {
@@ -20,7 +21,11 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" + "day=" + day + ", month=" + month + ", year=" + year + '}';
+        return day+"/"+month+"/"+year;
     }
-    
+
+    @Override
+    public int hashCode() {
+        return day ^ month ^ year;
+    }
 }

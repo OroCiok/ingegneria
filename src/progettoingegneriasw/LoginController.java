@@ -21,10 +21,12 @@ public class LoginController implements ActionListener {
 
     private LoginView loginView;
     private Login login;
+    private Magazzino magazzino;
 
-    public LoginController(LoginView loginView, Login login) {
+    public LoginController(LoginView loginView, Login login, Magazzino magazzino) {
         this.loginView = loginView;
         this.login = login;
+        this.magazzino=magazzino;
         loginView.addActionListeners(this);
         loginView.setVisible(true);
         loginView.setResizable(false);
@@ -41,7 +43,7 @@ public class LoginController implements ActionListener {
         if (e.getSource() == loginView.login) {
              utenti = login.getUtenti();
             int i = 0;
-            if(loginView.segreteria.isSelected() || loginView.magazzino.isSelected() || loginView.gestioneNegozio.isSelected()){
+            if(loginView.segreteria.isSelected() || loginView.magazzino.isSelected() /*|| */){
             	
             	while (utenti[i] != loginView.getUser()) {
             		i++;
@@ -62,20 +64,39 @@ public class LoginController implements ActionListener {
                     		SegreteriaController segreteriaController = new SegreteriaController(segreteriaView, segreteria);
                     		break;
                             case "magazzino":
-                    			//codice creazione view
-                    		break;
-                            case "gestioneNegozio":
                                 loginView.setVisible(false);
-                                NegozioView negozio_view = new NegozioView();
-                                Negozio negozio = new Negozio("DCTMTT97C18I775K", "Matteo Di Catterina", "Via Passere, 31", "San Briccio(VR)");
-                                NegozioController negozioController = new NegozioController(negozio_view, negozio);
-                    		break;
+                                MagazzinoView magazzino_view = new MagazzinoView();
+                                Magazzino magazzino = new Magazzino();
+                                MagazzinoController magazzinoController = new MagazzinoController(magazzino_view, magazzino);
+                    		break; 
                             default:
                     		break;
             		}
             	}
            
-         }else{
+         }
+            else if(loginView.gestioneNegozio.isSelected()){
+                Negozio negozio = null;
+                    String password[] = login.getPassword();
+
+                Segreteria segreteria = new Segreteria();
+                    for (int z = 0; z < segreteria.getShop_list().size(); z++) {
+                        if (segreteria.getShop_list().get(z).getCodFiscale().equals(loginView.getPassword())) {
+                            negozio = segreteria.getShop_list().get(z);
+                            break;
+                        }
+                    }
+
+                    if (negozio == null) {
+                        JOptionPane.showMessageDialog(null, "Password non inserita o sbagliata, reinserire la password.\nSi ricorda che bisogna inserire il proprio codice univoco.");
+                        loginView.password_text.setText("");
+                    } else {
+                        loginView.setVisible(false);
+                        VisualizzaCreaOrdiniNegozioView visualizza_crea_ordini_negozio_view = new VisualizzaCreaOrdiniNegozioView(segreteria, negozio);
+                        NegozioController negozioController = new NegozioController(visualizza_crea_ordini_negozio_view, negozio);
+                    }
+            }
+            else{
        	   	JOptionPane.showMessageDialog(null, "E' necessario selezionare l'utente per poter effettuare il login");
          }
       }	 

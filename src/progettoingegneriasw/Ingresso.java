@@ -5,39 +5,46 @@
  */
 package progettoingegneriasw;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 /**
  *
  * @author ionbaltaga
  */
 public class Ingresso {
-
+    private HashMap<Articolo,String> articoli;
     private int codIntUnivoco;
     private Data data;
-    private Articolo articolo;
-    private int posizione;
 
-    public Ingresso(int codIntUnivoco, Data data, Articolo articolo, int posizione) {
-        this.codIntUnivoco = codIntUnivoco;
+    public Ingresso(HashMap<Articolo, String> articoli, Data data) {
+        this.articoli = articoli;
         this.data = data;
-        this.articolo = articolo;
-        this.posizione = posizione;
+        this.codIntUnivoco = this.hashCode();
     }
 
     public int getCodIntUnivoco() {
-        return codIntUnivoco;
+        return this.codIntUnivoco;
     }
 
-    public Data getData() {
-        return data;
+    public String getData() {
+        return data.toString();
     }
 
-    public Articolo getArticolo() {
-        return articolo;
+    public HashMap<Articolo,String> getArticoli() {
+        return this.articoli;
     }
 
-    public int getPosizione() {
-        return posizione;
+    public void addArticolo(Articolo art, String pos) {
+        this.articoli.put(art,pos);
     }
+
+    public void setData(Data d) {
+        this.data = d;
+    }
+
     
-
+    @Override
+    public int hashCode() {
+        return articoli.hashCode() ^ data.hashCode();
+    }
 }
